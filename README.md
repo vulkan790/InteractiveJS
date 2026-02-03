@@ -125,3 +125,130 @@ npm run build
 - **Планшеты (iOS, Android)**
 - **Мобильные телефоны**
 - **Ландшафтная ориентация**
+
+- # InteractiveJS
+
+An interactive trainer for practicing JavaScript skills. A web application with user authentication, tasks in different categories and difficulty levels, a code editor with solution checking, and progress statistics.
+
+## Main Features
+
+- **User registration and login**
+- **Task catalog with 8 JavaScript categories:**
+  - JavaScript Basics
+  - Conditional Statements and Loops
+  - Functions
+  - Arrays and Array Methods
+  - Objects and OOP
+  - DOM-manipulation
+  - Event Handling
+  - Asynchronous JavaScript
+- **3 difficulty levels:** Easy, Medium, Hard
+- **Built-in code editor**
+- **Automatic solution checking with tests**
+- **Progress statistics in user profile**
+- **Task filtering and search**
+- **Responsive design for all devices**
+
+## Quick start
+
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm или yarn
+
+### Installation and Running
+
+1. **Clone the repository**
+```sh
+git clone https://github.com/vulkan790/interactivejs.git
+cd interactivejs
+```
+
+2. **Install dependencies**
+```sh
+npm install
+```
+
+3. **Run in development mode**
+```sh
+npm run dev
+```
+
+4. **Open in your browser**
+http://localhost:5173
+
+5. **Build for production**
+```sh
+npm run build
+```
+
+## Technologies Used
+
+- **Frontend:** Vue 3 + Composition API
+- **Routing:** Vue Router 4
+- **State Management:** Pinia
+- **Basic Layout:** HTML/CSS
+- **Data Storage:** localStorage (simulating Backend)
+- **Build Tool:** Vite
+
+## Implementation Details
+
+### Authentication System
+
+- **Token authentication stored in localStorage**
+- **Client-side form validation**
+- **Protected routes for logged-in users**
+
+### Task System
+
+- **12 ready tasks of varying difficulty**
+- **Automatic checking by comparing outputs**
+- **Code draft saving**
+- **Test result visualization**
+
+### Progress Statistics
+
+- **Number of solved tasks**
+- **Course completion percentage**
+- **Progress bars for each topic**
+- **Registration date**
+
+### UI/UX
+
+- **Dark theme**
+- **Mobile adaptation**
+- **Intuitive navigation**
+
+## Task Format
+
+Each task is stored in taskData.js with the following structure:
+Task example:
+
+```js
+{
+    id: 'task-conditions-1',
+    difficulty: 'medium',
+    title: 'Проверка числа',
+    description: 'Напишите программу, которая проверяет, является ли число положительным, отрицательным или нулём. Число задано в переменной num.',
+    category: 'Условные операторы и циклы',
+    categoryKey: 'Условные операторы и циклы',
+    inputExample: 'let num = 5;',
+    outputExample: 'Положительное',
+    solution: 'let num = 5;\nif (num > 0) {\n  console.log("Положительное");\n} else if (num < 0) {\n  console.log("Отрицательное");\n} else {\n  console.log("Ноль");\n}',
+    tests: [
+        { input: 'let num = 5;', expected: 'Положительное' },
+        { input: 'let num = -3;', expected: 'Отрицательное' },
+        { input: 'let num = 0;', expected: 'Ноль' }
+    ],
+    starterCode: '// Пишите ваш код здесь\n'
+}
+```
+
+## Data Storage
+
+Currently everything is stored locally in the browser. Backend integration is planned for the future.
+
+## Supported Devices
+- **Desktop (Chrome, Firefox, Edge)**
+- **Tablets (iOS, Android)**
+- **Mobile phones**
+- **Landscape orientation**
