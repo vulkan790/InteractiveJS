@@ -126,7 +126,7 @@ npm run build
 - **Мобильные телефоны**
 - **Ландшафтная ориентация**
 
-- # InteractiveJS
+# InteractiveJS
 
 An interactive trainer for practicing JavaScript skills. A web application with user authentication, tasks in different categories and difficulty levels, a code editor with solution checking, and progress statistics.
 
