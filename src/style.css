@@ -55,7 +55,7 @@ header {
     align-items: center;
     justify-content: space-between;
     background: transparent;
-    flex-wrap: wrap; /* Добавляем перенос элементов */
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -99,7 +99,7 @@ header {
 .nav {
     display: flex;
     background: transparent;
-    width: 100%; /* Занимает всю ширину на мобильных */
+    width: 100%;
 }
 
 .nav-list {
@@ -110,7 +110,7 @@ header {
     padding: 0;
     background: transparent;
     width: 100%;
-    justify-content: flex-end; /* Выравнивание по правому краю на десктопе */
+    justify-content: flex-end;
 }
 
 .nav-item {
