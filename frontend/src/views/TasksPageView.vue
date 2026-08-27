@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
 import { ref, onMounted, computed } from 'vue'
 import { getAllTasks, type SeedTask } from '@/api/tasksData'
+import { getUserStats } from '@/api/taskStats'
 import type { User } from '@/types/domain'
 
 const router = useRouter()
@@ -17,6 +18,7 @@ const selectedDifficulty = ref('all')
 
 const tasks = ref<SeedTask[]>([])
 const categories = ref<string[]>([])
+const solvedTaskIds = ref<string[]>([])
 
 onMounted(() => {
     const currentUser = auth.getCurrentUser()
@@ -28,6 +30,7 @@ onMounted(() => {
     user.value = currentUser
     tasks.value = getAllTasks()
     categories.value = [...new Set(tasks.value.map((task) => task.categoryKey))]
+    solvedTaskIds.value = getUserStats(currentUser.id).solvedTasks
 })
 
 const filteredTasks = computed<SeedTask[]>(() => {
@@ -116,7 +119,8 @@ const resetFilters = (): void => {
                                 <TaskComponent 
                                     v-for="task in categoryTasks"
                                     :key="task.id"
-                                    :task="task"/>
+                                    :task="task"
+                                    :is-solved="solvedTaskIds.includes(task.id)"/>
                             </div>
                         </div>
                     </div>

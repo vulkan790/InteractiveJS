@@ -18,6 +18,14 @@ const error = ref('')
 const success = ref(false)
 const isLoading = ref(false)
 
+const getErrorMessage = (e: unknown): string => {
+    if (e instanceof Error)
+        return e.message
+    if (e && typeof e === "object" && "message" in e)
+        return String((e as { message: unknown }).message)
+    return String(e)
+}
+
 const handleSubmit = async (): Promise<void> => {
     error.value = ''
     success.value = false
@@ -54,7 +62,7 @@ const handleSubmit = async (): Promise<void> => {
     } 
     catch (e) 
     {
-        error.value = e instanceof Error ? e.message : String(e)
+        error.value = getErrorMessage(e)
     } 
     finally 
     {
