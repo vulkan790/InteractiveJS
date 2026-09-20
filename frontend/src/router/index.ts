@@ -4,6 +4,7 @@ import ProfilePageView from '@/views/ProfilePageView.vue'
 import RegisterPageView from '@/views/RegisterPageView.vue'
 import TasksPageView from '@/views/TasksPageView.vue'
 import TaskPageView from '@/views/TaskPageView.vue'
+import NotFoundPageView from '@/views/NotFoundPageView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -42,6 +43,11 @@ const routes = [
                 component: TaskPageView,
             },
         ]
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        name: "NotFound",
+        component: NotFoundPageView
     }
 ]
 

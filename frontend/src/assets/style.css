@@ -1227,6 +1227,49 @@ header {
     transform: scale(1.05);
 }
 
+/* 404 страница (Не найдена)*/
+/* 404 page (Not Found)*/
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    text-align: center;
+}
+
+.not-found h1 {
+    font-size: 72px;
+    color: #fff;
+    margin: 0;
+}
+
+.not-found h2 {
+    font-size: 24px;
+    color: #fff;
+    margin: 16px 0 8px;
+}
+
+.not-found p {
+    color: #fff;
+    margin-bottom: 24px;
+}
+
+.not-found a {
+    padding: 10px 24px;
+    background: #667eea;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.not-found a:hover {
+    background: #764ba2;
+}
+
 /* Мобильная адаптивность */
 /* Mobile adaptability */
 
