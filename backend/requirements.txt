@@ -12,3 +12,5 @@ greenlet
 PyJWT
 psycopg2-binary
 aiosqlite
+pytest
+httpx

@@ -15,11 +15,6 @@ app.add_middleware(
 
 app.include_router(users_router)
 
-@app.on_event("startup")
-async def init_db():
-    async with async_engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-
 @app.get("/")
 async def root():
     return {"message": "Добро пожаловать в API InteractiveJS!"}
