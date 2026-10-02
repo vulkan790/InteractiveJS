@@ -2,6 +2,7 @@ from fastapi import *
 from fastapi.middleware.cors import *
 from app.database import async_engine, Base
 from app.routers.users import router as users_router
+from app.routers.tasks import router as tasks_router
 
 app = FastAPI(title="FastAPI InteractiveJS", version="0.1.0")
 
@@ -14,6 +15,7 @@ app.add_middleware(
 )
 
 app.include_router(users_router)
+app.include_router(tasks_router)
 
 @app.get("/")
 async def root():

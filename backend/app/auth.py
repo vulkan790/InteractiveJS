@@ -34,6 +34,13 @@ def create_refresh_token(data: dict):
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
+def require_role(*allowed_roles: str):
+    def check_role(current_user: UserModel = Depends(get_current_user)) -> UserModel:
+        if current_user.role not in allowed_roles:
+            raise HTTPException(status_code=403, detail=f"Требуется роль: {', '.join(allowed_roles)}")
+        return current_user
+    return check_role
+
 async def get_current_user(token: str = Depends(oauth2_scheme), db: AsyncSession = Depends(get_async_db)):
     credentials_exception = HTTPException(status_code=401, detail="Could not validate credentials", headers={"WWW-Authenticate": "Bearer"})
     try:
