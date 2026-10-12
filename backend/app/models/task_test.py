@@ -3,7 +3,7 @@ from sqlalchemy.orm import *
 from app.database import Base
 
 class TaskTest(Base):
-    __tablename__ = "tasks"
+    __tablename__ = "task_tasks"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     task_id: Mapped[int] = mapped_column(ForeignKey("tasks.id"), nullable=False)

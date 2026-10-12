@@ -13,7 +13,7 @@ router = APIRouter(prefix="/tasks", tags=["tasks"])
 
 @router.get("/", response_model=list[TaskResponse])
 async def list_tasks(category_key: str | None = Query(None), difficulty: str | None = Query(None), db: AsyncSession = Depends(get_async_db)):
-    stmt = select(TaskModel).where(TaskModel.status == "Published")
+    stmt = select(TaskModel).where(TaskModel.status == "published")
     if category_key is not None:
         stmt = stmt.where(TaskModel.category_key == category_key)
     if difficulty is not None:
@@ -26,7 +26,7 @@ async def get_task(task_id: int, db: AsyncSession = Depends(get_async_db)):
     result = await db.scalars(select(TaskModel).where(TaskModel.id == task_id, TaskModel.status == "published"))
     task = result.first()
     if task is None:
-        raise HTTPException(status_code=401, detail="Task is not found")
+        raise HTTPException(status_code=404, detail="Task is not found")
     return task
 
 @router.post("/", response_model=TaskResponse, status_code=201)

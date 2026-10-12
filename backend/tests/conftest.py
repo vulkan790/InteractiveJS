@@ -32,3 +32,27 @@ def reset_database():
 def client():
     with TestClient(app) as c:
         yield c
+
+@pytest.fixture
+def promote():
+    engine = create_engine(TEST_DATABASE_URL_SYNC)
+    def _set(email: str, role: str):
+        with engine.begin() as conn:
+            conn.execute(
+                text("UPDATE users SET role = :r WHERE email = :e"),
+                {"r": role, "e": email}
+            )
+    yield _set
+    engine.dispose()
+
+@pytest.fixture
+def publish():
+    engine = create_engine(TEST_DATABASE_URL_SYNC)
+    def _set(task_id: int, status: str = "published"):
+        with engine.begin() as conn:
+            conn.execute(
+                text("UPDATE tasks SET status = :s WHERE id = :i"),
+                {"s": status, "i": task_id},
+            )
+    yield _set
+    engine.dispose()
