@@ -1,3 +1,4 @@
+import app.models
 from fastapi import *
 from fastapi.middleware.cors import *
 from app.database import async_engine, Base

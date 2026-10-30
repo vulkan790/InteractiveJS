@@ -22,3 +22,4 @@ class Task(Base):
  
     author: Mapped["User"] = relationship(lazy="selectin")
     tests: Mapped[list["TaskTest"]] = relationship(back_populates="task", cascade="all, delete-orphan", lazy="selectin")
+    submissions: Mapped[list["Submission"]] = relationship(back_populates="task", cascade="all, delete-orphan", lazy="selectin")
